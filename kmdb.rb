@@ -77,14 +77,195 @@
 
 # Delete existing data, so you'll start fresh each time this script is run.
 # Use `Model.destroy_all` code.
-# TODO!
+Studio.destroy_all
+Movie.destroy_all
+Actor.destroy_all
+Role.destroy_all
+Agent.destroy_all
 
 # Generate models and tables, according to the domain model.
-# TODO!
+# rails generate model Studio
+# rails generate model Movie
+# rails generate model Actor
+# rails generate model Role
+# rails generate model Agent
+# rails db:migrate
 
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
-# TODO!
+
+# Create studios
+studio = Studio.new
+studio["name"] = "Warner Bros."
+studio.save
+
+# Create movies
+movie = Movie.new
+movie["title"] = "Batman Begins"
+movie["year_released"] = 2005
+movie["rated"] = "PG-13"
+movie["studio_id"] = studio["id"]
+movie.save
+
+movie = Movie.new 
+movie["title"] = "The Dark Knight"
+movie["year_released"] = 2008
+movie["rated"] = "PG-13"
+movie["studio_id"] = studio["id"]
+movie.save
+
+movie = Movie.new
+movie["title"] = "The Dark Knight Rises"
+movie["year_released"] = 2012
+movie["rated"] = "PG-13"
+movie["studio_id"] = studio["id"]
+movie.save
+
+# Create actors
+actor = Actor.new
+actor["name"] = "Christian Bale"
+actor.save 
+
+actor = Actor.new
+actor["name"] = "Michael Caine"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Liam Neeson"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Katie Holmes"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Gary Oldman"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Heath Ledger"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Aaron Eckhart"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Maggie Gyllenhaal"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Tom Hardy"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Joseph Gordon-Levitt"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Anne Hathaway"
+actor.save
+
+# Create agent
+agent = Agent.new
+agent["name"] = "Ari Emanuel"
+agent.save
+
+# Create roles for Batman Begins
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "Batman Begins"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Christian Bale"})["id"]
+role["character_name"] = "Bruce Wayne"
+role.save
+
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "Batman Begins"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Michael Caine"})["id"]
+role["character_name"] = "Alfred"
+role.save
+
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "Batman Begins"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Liam Neeson"})["id"]
+role["character_name"] = "Ra's Al Ghul"
+role.save
+
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "Batman Begins"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Katie Holmes"})["id"]
+role["character_name"] = "Rachel Dawes"
+role.save
+
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "Batman Begins"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Gary Oldman"})["id"]
+role["character_name"] = "Commissioner Gordon"
+role.save
+
+# Create roles for The Dark Knight
+
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "The Dark Knight"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Christian Bale"})["id"]
+role["character_name"] = "Bruce Wayne"
+role.save
+
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "The Dark Knight"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Heath Ledger"})["id"]
+role["character_name"] = "Joker"
+role.save
+
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "The Dark Knight"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Aaron Eckhart"})["id"]
+role["character_name"] = "Harvey Dent"
+role.save
+
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "The Dark Knight"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Michael Caine"})["id"]
+role["character_name"] = "Alfred"
+role.save
+
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "The Dark Knight"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Maggie Gyllenhaal"})["id"]
+role["character_name"] = "Rachel Dawes"
+role.save
+
+# Create roles for The Dark Knight Rises
+
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "The Dark Knight Rises"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Christian Bale"})["id"]
+role["character_name"] = "Bruce Wayne"
+role.save
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "The Dark Knight Rises"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Gary Oldman"})["id"]
+role["character_name"] = "Commissioner Gordon"
+role.save
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "The Dark Knight Rises"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Tom Hardy"})["id"]
+role["character_name"] = "Bane"
+role.save
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "The Dark Knight Rises"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Joseph Gordon-Levitt"})["id"]
+role["character_name"] = "John Blake"
+role.save
+role = Role.new
+role["movie_id"] = Movie.find_by({"title" => "The Dark Knight Rises"})["id"]
+role["actor_id"] = Actor.find_by({"name" => "Anne Hathaway"})["id"]
+role["character_name"] = "Selina Kyle"
+role.save
+
+# Assign agent to Christian Bale
+christian_bale = Actor.find_by({"name" => "Christian Bale"})
+christian_bale["agent_id"] = Agent.find_by({"name" => "Ari Emanuel"})["id"]
+christian_bale.save
 
 # Prints a header for the movies output
 puts "Movies"
